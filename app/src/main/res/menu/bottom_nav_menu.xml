@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/title_dashboard" />
+    <item
+        android:id="@+id/navigation_order"
+        android:icon="@drawable/ic_baseline_insert_drive_file_24"
+        android:title="@string/title_order" />
+
+    <item
+        android:id="@+id/navigation_product"
+        android:icon="@drawable/ic_baseline_layers_24"
+        android:title="@string/title_product" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_baseline_apps_24"
+        android:title="@string/title_more" />
+</menu>
