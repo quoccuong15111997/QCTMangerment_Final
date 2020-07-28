@@ -23,4 +23,11 @@
     <string name="product_list">Danh sách sản phẩm</string>
     <string name="import_product">Nhập hàng</string>
     <string name="check_inventory">Kiểm tra tồn kho</string>
+    <string name="sign_in">ĐĂNG NHẬP</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="new_user">Chưa có tài khoản?</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="next">Tiếp</string>
+    <string name="get_started">Bắt đầu</string>
 </resources>

@@ -8,6 +8,8 @@
 
     <dimen name="size_row">135dp</dimen>
 
+    <dimen name="viewpager_margin_overlap">-60dp</dimen>
+
     <!--Table-->
     <dimen name="table_view_cell_height">28dp</dimen>
     <dimen name="table_view_row_header_width">28dp</dimen>

@@ -22,4 +22,11 @@
     <string name="product_list">Product list</string>
     <string name="import_product">Import product</string>
     <string name="check_inventory">Check inventory</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="new_user">New user?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
 </resources>
