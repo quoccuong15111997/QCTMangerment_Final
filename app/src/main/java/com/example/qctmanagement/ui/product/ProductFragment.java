@@ -1,7 +1,9 @@
 package com.example.qctmanagement.ui.product;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,19 +15,35 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.qctmanagement.R;
+import com.example.qctmanagement.databinding.ProductFragmentBinding;
+import com.example.qctmanagement.ui.product.list.ProductListActivity;
 
 public class ProductFragment extends Fragment {
 
     private ProductViewModel mViewModel;
-
-    public static ProductFragment newInstance() {
-        return new ProductFragment();
-    }
+    private ProductFragmentBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.product_fragment, container, false);
+        binding= DataBindingUtil.inflate(inflater,R.layout.product_fragment, container, false);
+
+        addControls();
+        addEvents();
+        return binding.getRoot();
+    }
+
+    private void addEvents() {
+        binding.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getContext(), ProductListActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void addControls() {
     }
 
     @Override
