@@ -4,6 +4,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,9 @@ import com.example.qctmanagement.R;
 import com.example.qctmanagement.adapter.ProductAdapter;
 import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
 import com.example.qctmanagement.callback.ProductListCallback;
+import com.example.qctmanagement.common.Constant;
 import com.example.qctmanagement.databinding.ProductListFragmentBinding;
+import com.example.qctmanagement.ui.product.detail.ProductDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +55,9 @@ public class ProductListFragment extends Fragment {
         productAdapter= new ProductAdapter(list, new ProductListCallback() {
             @Override
             public void onProductClick(ProductItemApiResponse product) {
-
+                Intent intent= new Intent(getContext(), ProductDetailActivity.class);
+                intent.putExtra(Constant.KEY_PUT_PRODUCT,product);
+                startActivity(intent);
             }
         });
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext());

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.qctmanagement">
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,9 +23,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.product.list.ProductListActivity"></activity>
-        <activity android:name=".ui.wizard.WizardActivity"></activity>
-        <activity android:name=".ui.login.LoginActivity"></activity>
+        <activity android:name=".ui.product.detail.ProductDetailActivity">
+
+        </activity>
+        <activity android:name=".ui.product.list.ProductListActivity" />
+        <activity android:name=".ui.wizard.WizardActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

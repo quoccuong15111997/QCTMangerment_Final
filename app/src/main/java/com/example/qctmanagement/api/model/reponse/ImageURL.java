@@ -4,7 +4,9 @@ import android.telephony.SignalStrength;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ImageURL {
+import java.io.Serializable;
+
+public class ImageURL implements Serializable {
     @SerializedName("URL")
     private String url;
 

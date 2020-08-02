@@ -1,8 +1,13 @@
 package com.example.qctmanagement.api.model.reponse;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category extends BaseObservable implements Serializable {
     @SerializedName("ITEMCODE")
     private int itemCode;
     @SerializedName("ITEMNAME")
@@ -19,6 +24,7 @@ public class Category {
         this.itemCode = itemCode;
     }
 
+    @Bindable
     public String getItemName() {
         return itemName;
     }

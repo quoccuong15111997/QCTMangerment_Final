@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.product.detail.ProductDetailFragment">
+    <data>
+        <variable
+            name="product"
+            type="com.example.qctmanagement.api.model.reponse.ProductItemApiResponse" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_5">
+
+        <include
+            android:id="@+id/include3"
+            layout="@layout/custom_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include3"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="@dimen/space_100"
+                    android:layout_height="@dimen/space_100"
+                    android:layout_marginTop="5dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/productdemo" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleImage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycleImage">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/txtProductName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="@{product.itemName}"
+                            android:textColor="@color/grey_80"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="IPhone 4" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtProductName">
+
+                            <TextView
+                                android:id="@+id/textView30"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Mã" />
+
+                            <TextView
+                                android:id="@+id/txtProductCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{product.itemCode}"
+                                android:textColor="@color/grey_80"
+                                tools:text="000000001" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                            <TextView
+                                android:id="@+id/textView301"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Đơn vị tính" />
+
+                            <TextView
+                                android:id="@+id/txtProductUnit"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@{product.unit.itemName}"
+                                android:textColor="@color/grey_80"
+                                tools:text="Cái" />
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/textView301235"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Tồn kho"
+                                android:textColor="@color/grey_80"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtProductQuantity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{Double.toString(product.quantity)}"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/grey_80"
+                                tools:text="1000" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/grey_5" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
+
+                            <TextView
+                                android:id="@+id/textView3012"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Giá bán" />
+
+                            <TextView
+                                android:id="@+id/txtProductSellPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{Double.toString(product.sellPrice)}"
+                                android:textColor="@color/grey_80"
+                                tools:text="100.000 đ" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1sp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/grey_5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+                            <TextView
+                                android:id="@+id/textView30123"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Giá nhập" />
+
+                            <TextView
+                                android:id="@+id/txtProductPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@{Double.toString(product.price)}"
+                                android:textColor="@color/grey_80"
+                                tools:text="90.000 đ" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView4">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/textView31"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Thông tin thêm"
+                                android:textColor="@color/grey_80"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView32"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Mô tả, phân loại sản phẩm"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1sp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/grey_5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Loại sản phẩm" />
+
+                            <TextView
+                                android:id="@+id/txtCategory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{product.category.itemName}"
+                                android:textColor="@color/grey_80"
+                                tools:text="Điện thoại" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1sp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/grey_5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Nhãn hiệu" />
+
+                            <TextView
+                                android:id="@+id/txtBranch"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="@color/grey_80"
+                                tools:text="Apple" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1sp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/grey_5" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Mô tả" />
+
+                            <TextView
+                                android:id="@+id/txtDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{product.shortDescription}"
+                                android:textColor="@color/grey_80"
+                                tools:text="Điện thoại xịn" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

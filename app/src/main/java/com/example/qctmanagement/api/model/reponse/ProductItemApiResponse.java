@@ -1,12 +1,15 @@
 package com.example.qctmanagement.api.model.reponse;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.internal.$Gson$Types;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class ProductItemApiResponse implements Serializable {
+public class ProductItemApiResponse extends BaseObservable implements Serializable {
     @SerializedName("ITEMCODE")
     private String itemCode;
     @SerializedName("ITEMNAME")
@@ -51,6 +54,7 @@ public class ProductItemApiResponse implements Serializable {
         this.itemCode = itemCode;
     }
 
+    @Bindable
     public String getItemName() {
         return itemName;
     }
@@ -59,6 +63,7 @@ public class ProductItemApiResponse implements Serializable {
         this.itemName = itemName;
     }
 
+    @Bindable
     public Unit getUnit() {
         return unit;
     }
@@ -67,6 +72,7 @@ public class ProductItemApiResponse implements Serializable {
         this.unit = unit;
     }
 
+    @Bindable
     public String getDescription() {
         return description;
     }
@@ -75,6 +81,7 @@ public class ProductItemApiResponse implements Serializable {
         this.description = description;
     }
 
+    @Bindable
     public String getShortDescription() {
         return shortDescription;
     }
@@ -83,6 +90,7 @@ public class ProductItemApiResponse implements Serializable {
         this.shortDescription = shortDescription;
     }
 
+    @Bindable
     public double getQuantity() {
         return quantity;
     }
@@ -91,6 +99,7 @@ public class ProductItemApiResponse implements Serializable {
         this.quantity = quantity;
     }
 
+    @Bindable
     public double getPrice() {
         return price;
     }
@@ -99,6 +108,7 @@ public class ProductItemApiResponse implements Serializable {
         this.price = price;
     }
 
+    @Bindable
     public double getSellPrice() {
         return sellPrice;
     }
@@ -123,6 +133,7 @@ public class ProductItemApiResponse implements Serializable {
         this.listImageDetails = listImageDetails;
     }
 
+    @Bindable
     public Color getColor1() {
         return color1;
     }
@@ -131,6 +142,7 @@ public class ProductItemApiResponse implements Serializable {
         this.color1 = color1;
     }
 
+    @Bindable
     public Color getColor2() {
         return color2;
     }
@@ -139,6 +151,7 @@ public class ProductItemApiResponse implements Serializable {
         this.color2 = color2;
     }
 
+    @Bindable
     public Color getColor3() {
         return color3;
     }
@@ -147,6 +160,7 @@ public class ProductItemApiResponse implements Serializable {
         this.color3 = color3;
     }
 
+    @Bindable
     public boolean isDiscount() {
         return isDiscount;
     }
@@ -155,6 +169,7 @@ public class ProductItemApiResponse implements Serializable {
         isDiscount = discount;
     }
 
+    @Bindable
     public double getDiscountPrice() {
         return discountPrice;
     }
@@ -163,6 +178,7 @@ public class ProductItemApiResponse implements Serializable {
         this.discountPrice = discountPrice;
     }
 
+    @Bindable
     public Category getCategory() {
         return category;
     }

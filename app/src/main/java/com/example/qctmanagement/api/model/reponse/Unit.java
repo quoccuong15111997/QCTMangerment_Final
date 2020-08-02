@@ -2,7 +2,9 @@ package com.example.qctmanagement.api.model.reponse;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Unit {
+import java.io.Serializable;
+
+public class Unit implements Serializable {
     @SerializedName("ITEMCODE")
     private int itemCode;
     @SerializedName("ITEMNAME")
