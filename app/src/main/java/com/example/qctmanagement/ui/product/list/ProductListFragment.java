@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +30,7 @@ import com.example.qctmanagement.ui.product.detail.ProductDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductListFragment extends Fragment {
 
@@ -34,6 +38,7 @@ public class ProductListFragment extends Fragment {
     private ProductListFragmentBinding binding;
     private RecyclerView recyclerViewProduct;
     private List<ProductItemApiResponse> list;
+    private List<ProductItemApiResponse> listCurrent;
     private ProductAdapter productAdapter;
 
     @Override
@@ -47,11 +52,48 @@ public class ProductListFragment extends Fragment {
     }
 
     private void addEvents() {
+        binding.include2.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+        binding.edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                doSearchProduct(s.toString());
+            }
+        });
+    }
+
+    private void doSearchProduct(final String s) {
+        List<ProductItemApiResponse> listProductFiltered = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            listProductFiltered.addAll(listCurrent
+                    .stream()
+                    .filter(x -> x.getItemName().contains(s) || x.getItemCode().contains(s))
+                    .collect(Collectors.<ProductItemApiResponse>toList()));
+        }
+        list.clear();
+        list.addAll(listProductFiltered);
+        productAdapter.notifyDataSetChanged();
+
     }
 
     private void addControls() {
         recyclerViewProduct=binding.recycleProduct;
         list= new ArrayList<>();
+        listCurrent= new ArrayList<>();
         productAdapter= new ProductAdapter(list, new ProductListCallback() {
             @Override
             public void onProductClick(ProductItemApiResponse product) {
@@ -75,6 +117,7 @@ public class ProductListFragment extends Fragment {
             public void onChanged(List<ProductItemApiResponse> productItemApiResponses) {
                 list.clear();
                 list.addAll(productItemApiResponses);
+                listCurrent.addAll(productItemApiResponses);
                 recyclerViewProduct.post(new Runnable() {
                     @Override
                     public void run() {

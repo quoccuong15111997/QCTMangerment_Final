@@ -10,8 +10,9 @@
 
         <include
             android:id="@+id/include2"
-            layout="@layout/custom_toolbar"
+            layout="@layout/custom_toolbar_back"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></include>
 
@@ -19,17 +20,36 @@
             android:id="@+id/constrainSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp" android:background="@drawable/custom_edit_text_address"
             app:layout_constraintTop_toBottomOf="@+id/include2">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/edtSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:background="@drawable/custom_edit_text_search"
+                android:hint="Nhập tên, mã sản phẩm"
+                android:imeOptions="actionDone"
                 android:inputType="textPersonName"
-                android:text="Name"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="5dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                app:layout_constraintEnd_toStartOf="@+id/imgSearch"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_baseline_search_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
