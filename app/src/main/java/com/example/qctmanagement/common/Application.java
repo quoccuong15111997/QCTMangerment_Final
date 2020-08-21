@@ -6,6 +6,6 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ApiService.init("http://appqctwebservice.somee.com");
+        ApiService.init("http://apiqct.azurewebsites.net");
     }
 }

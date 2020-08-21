@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ProductApiResponse extends ApiResponse implements Serializable {
-    @SerializedName("DATA")
     private List<ProductItemApiResponse> productItemApiResponses;
 
     public ProductApiResponse() {

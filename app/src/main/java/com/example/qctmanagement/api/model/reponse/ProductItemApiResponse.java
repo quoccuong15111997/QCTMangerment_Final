@@ -3,6 +3,7 @@ package com.example.qctmanagement.api.model.reponse;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.internal.$Gson$Types;
 
@@ -11,179 +12,156 @@ import java.util.List;
 
 public class ProductItemApiResponse extends BaseObservable implements Serializable {
     @SerializedName("ITEMCODE")
-    private String itemCode;
+    public String iTEMCODE;
     @SerializedName("ITEMNAME")
-    private String itemName;
-    @SerializedName("UNIT")
-    private Unit unit;
+    public String iTEMNAME;
+    @SerializedName("UNITCODE")
+    public int uNITCODE;
     @SerializedName("DESCRIPTION")
-    private String description;
+    public String dESCRIPTION;
     @SerializedName("SDESCRIPTION")
-    private String shortDescription;
+    public String sDESCRIPTION;
     @SerializedName("QUANTITY")
-    private double quantity;
+    public double qUANTITY;
     @SerializedName("PRICE")
-    private double price;
+    public double pRICE;
     @SerializedName("SELLPRICE")
-    private double sellPrice;
+    public double sELLPRICE;
     @SerializedName("IMAGE")
-    private String image;
-    @SerializedName("IMAGEDETAILS")
-    private List<ImageURL> listImageDetails;
+    public String iMAGE;
     @SerializedName("COLOR1")
-    private Color color1;
+    public String cOLOR1;
     @SerializedName("COLOR2")
-    private Color color2;
+    public String cOLOR2;
     @SerializedName("COLOR3")
-    private Color color3;
+    public String cOLOR3;
     @SerializedName("DISCOUNT")
-    private boolean isDiscount;
+    public boolean dISCOUNT;
     @SerializedName("DISCOUNTPRICE")
-    private double discountPrice;
-    @SerializedName("CATEGORY")
-    private Category category;
+    public double dISCOUNTPRICE;
+    @SerializedName("CATEGORYCODE")
+    public int cATEGORYCODE;
 
     public ProductItemApiResponse() {
     }
 
-    public String getItemCode() {
-        return itemCode;
+    public String getiTEMCODE() {
+        return iTEMCODE;
     }
 
-    public void setItemCode(String itemCode) {
-        this.itemCode = itemCode;
+    public void setiTEMCODE(String iTEMCODE) {
+        this.iTEMCODE = iTEMCODE;
     }
 
-    @Bindable
-    public String getItemName() {
-        return itemName;
+    public String getiTEMNAME() {
+        return iTEMNAME;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setiTEMNAME(String iTEMNAME) {
+        this.iTEMNAME = iTEMNAME;
     }
 
-    @Bindable
-    public Unit getUnit() {
-        return unit;
+    public int getuNITCODE() {
+        return uNITCODE;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setuNITCODE(int uNITCODE) {
+        this.uNITCODE = uNITCODE;
     }
 
-    @Bindable
-    public String getDescription() {
-        return description;
+    public String getdESCRIPTION() {
+        return dESCRIPTION;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setdESCRIPTION(String dESCRIPTION) {
+        this.dESCRIPTION = dESCRIPTION;
     }
 
-    @Bindable
-    public String getShortDescription() {
-        return shortDescription;
+    public String getsDESCRIPTION() {
+        return sDESCRIPTION;
     }
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+    public void setsDESCRIPTION(String sDESCRIPTION) {
+        this.sDESCRIPTION = sDESCRIPTION;
     }
 
-    @Bindable
-    public double getQuantity() {
-        return quantity;
+    public double getqUANTITY() {
+        return qUANTITY;
     }
 
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
+    public void setqUANTITY(double qUANTITY) {
+        this.qUANTITY = qUANTITY;
     }
 
-    @Bindable
-    public double getPrice() {
-        return price;
+    public double getpRICE() {
+        return pRICE;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setpRICE(double pRICE) {
+        this.pRICE = pRICE;
     }
 
-    @Bindable
-    public double getSellPrice() {
-        return sellPrice;
+    public double getsELLPRICE() {
+        return sELLPRICE;
     }
 
-    public void setSellPrice(double sellPrice) {
-        this.sellPrice = sellPrice;
+    public void setsELLPRICE(double sELLPRICE) {
+        this.sELLPRICE = sELLPRICE;
     }
 
-    public String getImage() {
-        return image;
+    public String getiMAGE() {
+        return iMAGE;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setiMAGE(String iMAGE) {
+        this.iMAGE = iMAGE;
     }
 
-    public List<ImageURL> getListImageDetails() {
-        return listImageDetails;
+    public String getcOLOR1() {
+        return cOLOR1;
     }
 
-    public void setListImageDetails(List<ImageURL> listImageDetails) {
-        this.listImageDetails = listImageDetails;
+    public void setcOLOR1(String cOLOR1) {
+        this.cOLOR1 = cOLOR1;
     }
 
-    @Bindable
-    public Color getColor1() {
-        return color1;
+    public String getcOLOR2() {
+        return cOLOR2;
     }
 
-    public void setColor1(Color color1) {
-        this.color1 = color1;
+    public void setcOLOR2(String cOLOR2) {
+        this.cOLOR2 = cOLOR2;
     }
 
-    @Bindable
-    public Color getColor2() {
-        return color2;
+    public String getcOLOR3() {
+        return cOLOR3;
     }
 
-    public void setColor2(Color color2) {
-        this.color2 = color2;
+    public void setcOLOR3(String cOLOR3) {
+        this.cOLOR3 = cOLOR3;
     }
 
-    @Bindable
-    public Color getColor3() {
-        return color3;
+    public boolean isdISCOUNT() {
+        return dISCOUNT;
     }
 
-    public void setColor3(Color color3) {
-        this.color3 = color3;
+    public void setdISCOUNT(boolean dISCOUNT) {
+        this.dISCOUNT = dISCOUNT;
     }
 
-    @Bindable
-    public boolean isDiscount() {
-        return isDiscount;
+    public double getdISCOUNTPRICE() {
+        return dISCOUNTPRICE;
     }
 
-    public void setDiscount(boolean discount) {
-        isDiscount = discount;
+    public void setdISCOUNTPRICE(double dISCOUNTPRICE) {
+        this.dISCOUNTPRICE = dISCOUNTPRICE;
     }
 
-    @Bindable
-    public double getDiscountPrice() {
-        return discountPrice;
+    public int getcATEGORYCODE() {
+        return cATEGORYCODE;
     }
 
-    public void setDiscountPrice(double discountPrice) {
-        this.discountPrice = discountPrice;
-    }
-
-    @Bindable
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setcATEGORYCODE(int cATEGORYCODE) {
+        this.cATEGORYCODE = cATEGORYCODE;
     }
 }

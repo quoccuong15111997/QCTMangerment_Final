@@ -6,12 +6,14 @@ import androidx.annotation.NonNull;
 
 import com.example.qctmanagement.api.RestApi;
 import com.example.qctmanagement.api.model.reponse.ProductApiResponse;
+import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
 import com.example.qctmanagement.common.DateDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -65,9 +67,9 @@ public class ApiService {
         return apiService;
     }
 
-    public void getListProduct(JsonObject body, Callback<ProductApiResponse> callback){
+    public void getListProduct(JsonObject body, Callback<List<ProductItemApiResponse>> callback){
         if (retrofit!=null){
-            Call<ProductApiResponse> productApiResponseCall=retrofit.create(RestApi.class).getListProduct(body);
+            Call<List<ProductItemApiResponse>> productApiResponseCall=retrofit.create(RestApi.class).getListProduct(body);
             productApiResponseCall.enqueue(callback);
         }
     }

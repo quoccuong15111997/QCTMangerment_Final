@@ -25,7 +25,6 @@ import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
 import com.example.qctmanagement.callback.ImageClickCallback;
 import com.example.qctmanagement.common.Constant;
 import com.example.qctmanagement.databinding.ProductDetailFragmentBinding;
-import com.example.qctmanagement.databinding.ProductDetailFragmentBindingImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,9 +86,8 @@ public class ProductDetailFragment extends Fragment implements ImageClickCallbac
             @Override
             public void onChanged(ProductItemApiResponse productItemApiResponse) {
                 binding.setProduct(productItemApiResponse);
-                Glide.with(getActivity()).load(productItemApiResponse.getImage()).into(binding.imgProduct);
+                Glide.with(getActivity()).load(productItemApiResponse.getiMAGE()).into(binding.imgProduct);
                 list.clear();
-                list.addAll(productItemApiResponse.getListImageDetails());
                 recyclerViewImage.post(new Runnable() {
                     @Override
                     public void run() {

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.qctmanagement.api.model.reponse.ProductApiResponse;
 import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
 import com.example.qctmanagement.api.model.request.ApiRequest;
+import com.example.qctmanagement.api.model.request.KeyCodeRequest;
 import com.example.qctmanagement.api.service.ApiService;
 import com.example.qctmanagement.common.Constant;
 
@@ -24,20 +25,19 @@ public class ProductListViewModel extends ViewModel {
     }
 
     private void loadData() {
-        ApiRequest apiRequest = new ApiRequest();
-        apiRequest.setAuthKey(Constant.AUTH_KEY);
-        apiRequest.setKeyCode("%");
-        ApiService.getInstance().getListProduct(apiRequest.convertToJson(), new Callback<ProductApiResponse>() {
+        KeyCodeRequest keyCodeRequest = new KeyCodeRequest();
+        keyCodeRequest.setKeyCode("%");
+        ApiService.getInstance().getListProduct(keyCodeRequest.convertToJson(), new Callback<List<ProductItemApiResponse>>() {
             @Override
-            public void onResponse(Call<ProductApiResponse> call, Response<ProductApiResponse> response) {
+            public void onResponse(Call<List<ProductItemApiResponse>> call, Response<List<ProductItemApiResponse>> response) {
                 if (response.isSuccessful()){
-                    ProductApiResponse productApiResponse= response.body();
-                    itemApiResponseMutableLiveData.setValue(productApiResponse.getProductItemApiResponses());
+                    List<ProductItemApiResponse> productApiResponse= response.body();
+                    itemApiResponseMutableLiveData.setValue(productApiResponse);
                 }
             }
             @Override
-            public void onFailure(Call<ProductApiResponse> call, Throwable t) {
-
+            public void onFailure(Call<List<ProductItemApiResponse>> call, Throwable t) {
+                System.out.println(t.getMessage());
             }
         });
     }

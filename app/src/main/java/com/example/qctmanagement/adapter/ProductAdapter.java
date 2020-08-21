@@ -36,9 +36,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ProductItemApiResponse item = list.get(position);
-        holder.txtQuantityValue.setText(String.valueOf((int)item.getQuantity()));
-        holder.txtName.setText(item.getItemName());
-        Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.img);
+        holder.txtQuantityValue.setText(String.valueOf((int)item.getqUANTITY()));
+        holder.txtName.setText(item.getiTEMNAME());
+        Glide.with(holder.itemView.getContext()).load(item.getiMAGE()).into(holder.img);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

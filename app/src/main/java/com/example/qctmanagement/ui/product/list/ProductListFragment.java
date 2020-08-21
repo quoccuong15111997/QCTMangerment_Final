@@ -81,7 +81,7 @@ public class ProductListFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             listProductFiltered.addAll(listCurrent
                     .stream()
-                    .filter(x -> x.getItemName().contains(s) || x.getItemCode().contains(s))
+                    .filter(x -> x.getiTEMNAME().contains(s) || x.getiTEMCODE().contains(s))
                     .collect(Collectors.<ProductItemApiResponse>toList()));
         }
         list.clear();
