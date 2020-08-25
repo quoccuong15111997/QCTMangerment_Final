@@ -34,7 +34,7 @@ public class ProductFragment extends Fragment {
     }
 
     private void addEvents() {
-        binding.constraintLayout.setOnClickListener(new View.OnClickListener() {
+        binding.constraintLayoutOrderList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(getContext(), ProductListActivity.class);

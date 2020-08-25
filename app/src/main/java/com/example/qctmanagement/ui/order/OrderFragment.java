@@ -3,6 +3,7 @@ package com.example.qctmanagement.ui.order;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.qctmanagement.R;
 import com.example.qctmanagement.databinding.OrderFragmentBinding;
+import com.example.qctmanagement.ui.order.list.OrderListActivity;
+import com.example.qctmanagement.ui.order.list.OrderListFragment;
 
 public class OrderFragment extends Fragment {
 
@@ -33,6 +36,13 @@ public class OrderFragment extends Fragment {
     }
 
     private void addEvnets() {
+        binding.constraintLayoutOrderList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), OrderListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void addControls() {

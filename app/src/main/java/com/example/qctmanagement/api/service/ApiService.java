@@ -5,8 +5,12 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 
 import com.example.qctmanagement.api.RestApi;
+import com.example.qctmanagement.api.model.reponse.CustomerApiResponse;
 import com.example.qctmanagement.api.model.reponse.ProductApiResponse;
 import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
+import com.example.qctmanagement.api.model.reponse.SumProductApiResponse;
+import com.example.qctmanagement.api.model.reponse.order.status.OrderStatusApiresponse;
+import com.example.qctmanagement.api.model.reponse.order.status.update.UpdateStatusApiResponse;
 import com.example.qctmanagement.common.DateDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,6 +75,30 @@ public class ApiService {
         if (retrofit!=null){
             Call<List<ProductItemApiResponse>> productApiResponseCall=retrofit.create(RestApi.class).getListProduct(body);
             productApiResponseCall.enqueue(callback);
+        }
+    }
+    public void getSumProduct(Callback<SumProductApiResponse> callback){
+        if (retrofit!=null){
+            Call<SumProductApiResponse> sumProductApiResponseCall =retrofit.create(RestApi.class).getSumProduct();
+            sumProductApiResponseCall.enqueue(callback);
+        }
+    }
+    public void getListCustomerNewToday(Callback<List<CustomerApiResponse>> callback){
+        if (retrofit!=null){
+            Call<List<CustomerApiResponse>> listCall =retrofit.create(RestApi.class).getListCustomerNewToDay();
+            listCall.enqueue(callback);
+        }
+    }
+    public void getOrderStatus(JsonObject boby, Callback<List<OrderStatusApiresponse>>callback){
+        if (retrofit!=null){
+            Call<List<OrderStatusApiresponse>> listCall = retrofit.create(RestApi.class).getOrderStatus(boby);
+            listCall.enqueue(callback);
+        }
+    }
+    public void updateStatusOrder(int ordCode, int sttCode, Callback<List<UpdateStatusApiResponse>> callback){
+        if (retrofit!=null){
+            Call<List<UpdateStatusApiResponse>> listCall = retrofit.create(RestApi.class).updateStatusOrder(ordCode,sttCode);
+            listCall.enqueue(callback);
         }
     }
 }
