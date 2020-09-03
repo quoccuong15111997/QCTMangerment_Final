@@ -56,6 +56,12 @@ public class CustomerFragment extends FragmentCommon {
     }
 
     private void addEvents() {
+        binding.include5.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

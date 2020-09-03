@@ -104,9 +104,9 @@ public class ApiService {
             listCall.enqueue(callback);
         }
     }
-    public void doLogin(String username, String pasword, Callback<List<UserApiResponse>> callback){
+    public void doLogin(String username, String pasword,String token, Callback<List<UserApiResponse>> callback){
         if (retrofit!=null){
-            Call<List<UserApiResponse>> listCall = retrofit.create(RestApi.class).dologin(username,pasword);
+            Call<List<UserApiResponse>> listCall = retrofit.create(RestApi.class).dologin(username,pasword,token);
             listCall.enqueue(callback);
         }
     }

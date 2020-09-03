@@ -21,12 +21,22 @@ public class SharedPreferencesManager {
     private static final String PREF_ACCOUNT_PHONE = BuildConfig.APPLICATION_ID + ".account_phone";
     private static final String PREF_ACCOUNT_ADDRESS = BuildConfig.APPLICATION_ID + ".account_address";
     private static final String PREF_ACCOUNT_IMAGE = BuildConfig.APPLICATION_ID + ".account_image";
+    private static final String PREF_FCM_TOKEN = BuildConfig.APPLICATION_ID + ".pref_fmc_token";
 
     private static final String PREF_ROLE_CODE = BuildConfig.APPLICATION_ID + ".role_code";
 
     private static SharedPreferences sPreferences;
 
     private SharedPreferencesManager() {
+    }
+
+    public static void setFCMToken(String token){
+        SharedPreferences.Editor editor=sPreferences.edit();
+        editor.putString(PREF_FCM_TOKEN,token);
+        editor.commit();
+    }
+    public static String getFCMToken(){
+        return sPreferences.getString(PREF_FCM_TOKEN,"");
     }
 
     public static void init(Context context) {

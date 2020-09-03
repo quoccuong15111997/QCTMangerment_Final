@@ -60,6 +60,12 @@ public class OrderDetailFragment extends FragmentCommon {
     }
 
     private void addEvents() {
+        binding.include6.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,14 +155,21 @@ public class OrderDetailFragment extends FragmentCommon {
                 binding.txtSumSale.setText(Util.convertToCurrencyVN(sum));
                 binding.txtSumAll.setText(Util.convertToCurrencyVN(sum+30000));
                 productOrderInfoAdapter.notifyDataSetChanged();
-            }
-        });
-        mViewModel.getLiveDataListStatusModel().observe(getViewLifecycleOwner(), new Observer<List<OrderStatusModel>>() {
-            @Override
-            public void onChanged(List<OrderStatusModel> orderStatusModels) {
-                orderStatusModelList.clear();
-                orderStatusModelList.addAll(orderStatusModels);
-                statusModelArrayAdapter.notifyDataSetChanged();
+                if (orderStatusApiresponse.getOrderStatusHeaders().get(0).getsTTCODE()==9){
+                    binding.btnSave.setEnabled(false);
+                }
+                mViewModel.getLiveDataListStatusModel().observe(getViewLifecycleOwner(), new Observer<List<OrderStatusModel>>() {
+                    @Override
+                    public void onChanged(List<OrderStatusModel> orderStatusModels) {
+                        orderStatusModelList.clear();
+                        for (OrderStatusModel model : orderStatusModels){
+                            if (model.getCode() > orderStatusApiresponse.getOrderStatusHeaders().get(0).getsTTCODE()){
+                                orderStatusModelList.add(model);
+                            }
+                        }
+                        statusModelArrayAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
     }

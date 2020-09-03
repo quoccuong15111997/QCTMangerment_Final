@@ -23,6 +23,7 @@ import com.example.qctmanagement.api.service.ApiService;
 import com.example.qctmanagement.common.FragmentCommon;
 import com.example.qctmanagement.databinding.LoginFragmentBinding;
 import com.example.qctmanagement.sharedpreferences.SharedPreferencesManager;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class LoginFragment extends FragmentCommon {
 
     private void doLogin() {
         progressdialog.show();
-        ApiService.getInstance().doLogin(binding.edtUserName.getText().toString(), binding.edtPassword.getText().toString(), new Callback<List<UserApiResponse>>() {
+        ApiService.getInstance().doLogin(binding.edtUserName.getText().toString(), binding.edtPassword.getText().toString(),SharedPreferencesManager.getFCMToken(), new Callback<List<UserApiResponse>>() {
             @Override
             public void onResponse(Call<List<UserApiResponse>> call, Response<List<UserApiResponse>> response) {
                 if (response.isSuccessful()){
@@ -117,6 +118,7 @@ public class LoginFragment extends FragmentCommon {
     }
 
     private void addControls() {
+        registerNotificationToken();
         initProgressDialog("Đang đăng nhập","Vui lòng chờ....");
         if (SharedPreferencesManager.getPrefIsSavePassword()){
             binding.edtUserName.setText(SharedPreferencesManager.getPrefUserName());
@@ -198,6 +200,24 @@ public class LoginFragment extends FragmentCommon {
                         Toast.LENGTH_SHORT)
                         .show();
             }
+        }
+    }
+    private void registerNotificationToken() {
+        final String[] token = {SharedPreferencesManager.getFCMToken()};
+        if (token[0].equals("")) {
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(task -> {
+                        if (!task.isSuccessful()) {
+
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        if (task.getResult() != null) {
+                            token[0] = task.getResult().getToken();
+                            SharedPreferencesManager.setFCMToken(token[0]);
+                        }
+                    });
         }
     }
 }

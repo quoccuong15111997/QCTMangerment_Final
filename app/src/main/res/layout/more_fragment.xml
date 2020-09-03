@@ -105,6 +105,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:padding="10dp"
+                                        android:visibility="gone"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent">
@@ -229,6 +230,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:padding="10dp"
+                                        android:visibility="gone"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toBottomOf="@+id/layoutNotification">
@@ -270,10 +272,12 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:padding="10dp"
+                                        android:visibility="gone"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintHorizontal_bias="0.0"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/layoutSetting">
+                                        app:layout_constraintTop_toBottomOf="@+id/layoutSetting"
+                                        tools:visibility="gone">
 
                                         <ImageView
                                             android:id="@+id/imgHelp"
@@ -325,7 +329,8 @@
                                     android:id="@+id/layoutChangePassword"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:padding="10dp">
+                                    android:padding="10dp"
+                                    android:visibility="gone">
 
                                     <ImageView
                                         android:id="@+id/imageView18"

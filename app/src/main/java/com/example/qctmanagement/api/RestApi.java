@@ -35,7 +35,7 @@ public interface RestApi {
     Call<List<UpdateStatusApiResponse>> updateStatusOrder(@Query("employeeCode") String employeeCode,@Query("ordCode") int orderCode,@Query("sttCode") int sstCode);
 
     @POST("/api/employee")
-    Call<List<UserApiResponse>> dologin(@Query("username") String username, @Query("password") String password);
+    Call<List<UserApiResponse>> dologin(@Query("username") String username, @Query("password") String password,@Query("token") String token);
 
     @POST("/api/order?runcode=ORD.001")
     Call<OrderStatusApiresponse> getOrderInfo(@Body JsonObject jsonObject);
