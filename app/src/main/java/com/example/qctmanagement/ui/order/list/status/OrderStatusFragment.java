@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.qctmanagement.R;
 import com.example.qctmanagement.adapter.OrderStatusAdapter;
@@ -20,6 +21,7 @@ import com.example.qctmanagement.api.model.reponse.order.status.OrderStatusApire
 import com.example.qctmanagement.common.Constant;
 import com.example.qctmanagement.common.FragmentCommon;
 import com.example.qctmanagement.databinding.OrderStatusFragmentBinding;
+import com.example.qctmanagement.ui.order.list.detail.OrderDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,18 @@ public class OrderStatusFragment extends FragmentCommon {
     }
 
     private void addEvents() {
+        binding.swiperefesh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mViewModel.loadData(statusCode);
+                binding.swiperefesh.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.swiperefesh.setRefreshing(false);
+                    }
+                },500);
+            }
+        });
     }
 
     private void addControls() {
@@ -58,9 +72,9 @@ public class OrderStatusFragment extends FragmentCommon {
             @Override
             public void onItemClick(OrderStatusApiresponse orderApiResponse, int position) {
                 System.out.println("CLICK "+position);
-              /*  Intent intent = new Intent(getContext(), OrderInfoActivity.class);
+                Intent intent = new Intent(getContext(), OrderDetailActivity.class);
                 intent.putExtra(Constant.NAME_PUT_ORDER_CODE,orderApiResponse.getOrderStatusHeaders().get(0).getoRDCODE());
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -82,6 +96,7 @@ public class OrderStatusFragment extends FragmentCommon {
                 orderStatusAdapter.notifyDataSetChanged();
             }
         });
+
     }
 
 }

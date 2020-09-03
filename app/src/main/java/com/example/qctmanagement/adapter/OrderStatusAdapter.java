@@ -1,8 +1,5 @@
 package com.example.qctmanagement.adapter;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,18 +43,19 @@ public class OrderStatusAdapter extends RecyclerView.Adapter<OrderStatusAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         OrderStatusApiresponse apiresponse = list.get(position);
-        holder.txtProductName.setText(apiresponse.getOrderStatusDetails().get(0).getpRDNAME());
         holder.txtStatus.setText(apiresponse.getOrderStatusHeaders().get(0).getsTTNAME());
-        holder.txtQuatity.setText(String.valueOf((int)apiresponse.getOrderStatusDetails().get(0).getqUATITY()));
-        holder.txtProductPrice.setText(Util.convertToCurrencyVN(apiresponse.getOrderStatusDetails().get(0).getpRDSALEPRICE()));
         double sumPrice = 0;
         for (OrderStatusDetail detail : apiresponse.getOrderStatusDetails()){
             sumPrice+=(detail.getpRDSALEPRICE() * detail.getqUATITY());
         }
         holder.txtSumPrice.setText(Util.convertToCurrencyVN(sumPrice));
         holder.txtDate.setText(Util.formatDate(apiresponse.getOrderStatusHeaders().get(0).getoRDDATE()));
-        Glide.with(holder.itemView.getContext()).load(apiresponse.getOrderStatusDetails().get(0).getpRDIMAGE()).into(holder.imgProduct);
         holder.txtNumberProduct.setText(String.valueOf(apiresponse.getOrderStatusDetails().size()));
+        holder.txtCustName.setText(apiresponse.getOrderStatusHeaders().get(0).getcUSTNAME());
+        holder.txtPhone.setText(apiresponse.getOrderStatusHeaders().get(0).getpHONE());
+        holder.txtAddress.setText(apiresponse.getOrderStatusHeaders().get(0).getsHPADDR());
+        holder.txtOrderCode.setText(String.valueOf(apiresponse.getOrderStatusHeaders().get(0).getoRDCODE()));
+        holder.txtPayMethod.setText(apiresponse.getOrderStatusHeaders().get(0).getpAYMETHOD());
 
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,21 +72,20 @@ public class OrderStatusAdapter extends RecyclerView.Adapter<OrderStatusAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtProductName, txtProductPrice,txtSumPrice, txtQuatity, txtStatus, txtNumberProduct, txtDate;
-        ImageView imgColor, imgProduct;
+        TextView txtOrderCode, txtCustName,txtPhone, txtAddress,txtSumPrice, txtStatus, txtNumberProduct, txtDate,txtPayMethod;
         ConstraintLayout constraintLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtProductName = itemView.findViewById(R.id.txtProductName);
-            txtProductPrice = itemView.findViewById(R.id.txtProductPrice);
-            txtQuatity = itemView.findViewById(R.id.txtQuatity);
             txtSumPrice = itemView.findViewById(R.id.txtProductSumPrice);
-            imgColor = itemView.findViewById(R.id.color1BgImageVieww);
-            imgProduct = itemView.findViewById(R.id.imgProduct);
             txtStatus = itemView.findViewById(R.id.txtStatus);
             txtNumberProduct =itemView.findViewById(R.id.txtNumberProduct);
             txtDate = itemView.findViewById(R.id.txtDate);
             constraintLayout = itemView.findViewById(R.id.layout);
+            txtOrderCode =itemView.findViewById(R.id.txtOrderCode);
+            txtCustName = itemView.findViewById(R.id.txtCustName);
+            txtPhone=itemView.findViewById(R.id.txtPhone);
+            txtAddress = itemView.findViewById(R.id.txtAddress);
+            txtPayMethod = itemView.findViewById(R.id.txtPayMethod);
         }
     }
 }

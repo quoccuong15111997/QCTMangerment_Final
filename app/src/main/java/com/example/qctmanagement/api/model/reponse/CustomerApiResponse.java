@@ -29,8 +29,18 @@ public class CustomerApiResponse implements Serializable {
     private String iMAGE;
     @SerializedName("CREATEDATE")
     private String cREATEDATE;
+    @SerializedName("TOKENDIV")
+    private String token;
 
     public CustomerApiResponse() {
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public int getiTEMCODE() {

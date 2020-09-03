@@ -1,24 +1,22 @@
 package com.example.qctmanagement.ui.product.list;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.qctmanagement.R;
 import com.example.qctmanagement.adapter.ProductAdapter;
@@ -26,6 +24,7 @@ import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
 import com.example.qctmanagement.callback.ProductListCallback;
 import com.example.qctmanagement.common.Constant;
 import com.example.qctmanagement.databinding.ProductListFragmentBinding;
+import com.example.qctmanagement.ui.product.add.AddProductActivity;
 import com.example.qctmanagement.ui.product.detail.ProductDetailActivity;
 
 import java.util.ArrayList;
@@ -52,6 +51,13 @@ public class ProductListFragment extends Fragment {
     }
 
     private void addEvents() {
+        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddProductActivity.class);
+                startActivity(intent);
+            }
+        });
         binding.include2.imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +97,7 @@ public class ProductListFragment extends Fragment {
     }
 
     private void addControls() {
+        binding.include2.txtTitle.setText("Danh sách sản phẩm");
         recyclerViewProduct=binding.recycleProduct;
         list= new ArrayList<>();
         listCurrent= new ArrayList<>();
@@ -129,4 +136,11 @@ public class ProductListFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mViewModel!=null){
+            mViewModel.loadData();
+        }
+    }
 }

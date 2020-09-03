@@ -84,7 +84,7 @@
                         android:padding="5dp">
 
                         <TextView
-                            android:id="@+id/txtProductName"
+                            android:id="@+id/txtOrderCode"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -105,7 +105,7 @@
                             android:padding="5dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtProductName">
+                            app:layout_constraintTop_toBottomOf="@+id/txtOrderCode">
 
                             <TextView
                                 android:id="@+id/textView30"
@@ -140,12 +140,13 @@
                                 android:layout_weight="2"
                                 android:text="Đơn vị tính" />
 
-                            <TextView
-                                android:id="@+id/txtProductUnit"
+                            <Spinner
+                                android:id="@+id/spinerUnit"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textColor="@color/grey_80"
+                                android:background="@drawable/bg_spinner"
+                                android:padding="5dp"
                                 tools:text="Cái" />
                         </LinearLayout>
 
@@ -228,7 +229,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@{String.valueOf(product.sELLPRICE)}"
+                                android:text="@{product.displaySalePrice}"
                                 android:textColor="@color/grey_80"
                                 tools:text="100.000 đ" />
                         </LinearLayout>
@@ -261,7 +262,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="@{String.valueOf(product.pRICE)}"
+                                android:text="@{product.displayPrice}"
                                 android:textColor="@color/grey_80"
                                 tools:text="90.000 đ" />
                         </LinearLayout>
@@ -326,12 +327,15 @@
                                 android:layout_weight="2"
                                 android:text="Loại sản phẩm" />
 
-                            <TextView
-                                android:id="@+id/txtCategory"
+                            <Spinner
+                                android:id="@+id/spinerCate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:padding="5dp"
+                                android:background="@drawable/bg_spinner"
                                 android:textColor="@color/grey_80"
+                                android:clickable="false"
                                 tools:text="Điện thoại" />
                         </LinearLayout>
 
@@ -342,28 +346,6 @@
                             android:layout_marginBottom="3dp"
                             android:background="@color/grey_5" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:text="Nhãn hiệu" />
-
-                            <TextView
-                                android:id="@+id/txtBranch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="@color/grey_80"
-
-                                tools:text="Apple" />
-                        </LinearLayout>
-
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1sp"
@@ -380,16 +362,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="2"
+                                android:layout_weight="3"
                                 android:text="Mô tả" />
 
-                            <TextView
+                            <EditText
                                 android:id="@+id/txtDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:enabled="false"
                                 android:text="@{product.dESCRIPTION}"
                                 android:textColor="@color/grey_80"
+                                android:background="@drawable/custom_edit_text_address"
                                 tools:text="Điện thoại xịn" />
                         </LinearLayout>
                     </LinearLayout>

@@ -39,12 +39,12 @@ public class OrderListFragment extends Fragment {
     }
 
     private void addEvents() {
-       /* binding.include4.imgBack.setOnClickListener(new View.OnClickListener() {
+        binding.include4.imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().finish();
             }
-        });*/
+        });
     }
 
     private void addControls() {
@@ -54,7 +54,7 @@ public class OrderListFragment extends Fragment {
         setupViewPager(view_pager);
         tab_layout.setupWithViewPager(view_pager);
 
-        binding.include4.txtTitle.setText("Lịch sử đơn hàng");
+        binding.include4.txtTitle.setText("Danh sách đơn đặt hàng");
     }
 
     private void setupViewPager(ViewPager viewPager) {

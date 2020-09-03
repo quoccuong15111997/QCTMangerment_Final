@@ -32,4 +32,9 @@ public class Category extends BaseObservable implements Serializable {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
+
+    @Override
+    public String toString() {
+        return itemName;
+    }
 }

@@ -1,14 +1,11 @@
 package com.example.qctmanagement.api.model.reponse;
 
 import androidx.databinding.BaseObservable;
-import androidx.databinding.Bindable;
 
-import com.google.gson.annotations.Expose;
+import com.example.qctmanagement.common.Util;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.internal.$Gson$Types;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class ProductItemApiResponse extends BaseObservable implements Serializable {
     @SerializedName("ITEMCODE")
@@ -41,8 +38,28 @@ public class ProductItemApiResponse extends BaseObservable implements Serializab
     public double dISCOUNTPRICE;
     @SerializedName("CATEGORYCODE")
     public int cATEGORYCODE;
+    @SerializedName("CATEGORYNAME")
+    public  String categoryName;
+    @SerializedName("UNITNAME")
+    public String unitName;
 
     public ProductItemApiResponse() {
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
     }
 
     public String getiTEMCODE() {
@@ -163,5 +180,11 @@ public class ProductItemApiResponse extends BaseObservable implements Serializab
 
     public void setcATEGORYCODE(int cATEGORYCODE) {
         this.cATEGORYCODE = cATEGORYCODE;
+    }
+    public String getDisplayPrice(){
+        return Util.convertToCurrencyVN(pRICE);
+    }
+    public String getDisplaySalePrice(){
+        return Util.convertToCurrencyVN(sELLPRICE);
     }
 }

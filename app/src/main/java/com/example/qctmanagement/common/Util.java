@@ -59,7 +59,7 @@ public class Util {
         return String.valueOf(language.toCharArray()[0]).toUpperCase();
     }
 
-    public static String convertToCurrencyVN(double currency) {
+    public static String    convertToCurrencyVN(double currency) {
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String str1 = currencyVN.format(Double.valueOf(currency));

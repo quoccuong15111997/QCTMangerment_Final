@@ -3,12 +3,9 @@ package com.example.qctmanagement.ui.product.list;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.qctmanagement.api.model.reponse.ProductApiResponse;
 import com.example.qctmanagement.api.model.reponse.ProductItemApiResponse;
-import com.example.qctmanagement.api.model.request.ApiRequest;
 import com.example.qctmanagement.api.model.request.KeyCodeRequest;
 import com.example.qctmanagement.api.service.ApiService;
-import com.example.qctmanagement.common.Constant;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class ProductListViewModel extends ViewModel {
         loadData();
     }
 
-    private void loadData() {
+    public void loadData() {
         KeyCodeRequest keyCodeRequest = new KeyCodeRequest();
         keyCodeRequest.setKeyCode("%");
         ApiService.getInstance().getListProduct(keyCodeRequest.convertToJson(), new Callback<List<ProductItemApiResponse>>() {
